@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -18,9 +20,28 @@ namespace RobloxLauncher
         public Form1()
         {
             InitializeComponent();
-            // LoadServerVersion();
             DisplayPublicIP();
             DisplayLocalIP();
+            this.ResizeRedraw = true;
+            this.DoubleBuffered = true;
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+
+            Color color1 = Color.Green;
+            Color color2 = Color.DarkGreen;
+
+
+            Rectangle rectangle = new Rectangle(0, 0, this.Width, this.Height);
+
+
+            using (LinearGradientBrush brush = new LinearGradientBrush(rectangle, color1, color2, 45F)) // 45F is the angle of the gradient
+            {
+
+                e.Graphics.FillRectangle(brush, rectangle);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -239,50 +260,6 @@ namespace RobloxLauncher
             restartBTN.Enabled = true;
 
         }
-        /* private void LoadServerVersion()
-        {
-            string serverJarPath = Path.Combine(Application.StartupPath, "server", "server.jar");
-
-            if (File.Exists(serverJarPath))
-            {
-                try
-                {
-
-                    string javaPath = Path.Combine(Application.StartupPath, "jdk", "bin", "java.exe");
-                    string startArgs = $"-Xmx{ramALLmin.Value}M -Xms{ramALLmax.Value}M -jar \"{serverJarPath}\" nogui nojiline";
-                    ProcessStartInfo startInfo = new ProcessStartInfo
-                    {
-                        FileName = javaPath,
-                        Arguments = startArgs,
-                        WorkingDirectory = Path.GetDirectoryName(serverJarPath),
-                        CreateNoWindow = true,
-                        UseShellExecute = false,
-                        RedirectStandardInput = true,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true
-                    };
-
-                    using (Process process = Process.Start(startInfo))
-                    {
-                        using (StreamReader reader = process.StandardOutput)
-                        {
-                            string versionInfo = reader.ReadToEnd();
-                            AppendOutput($"Server Version: {versionInfo}");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error retrieving server version: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Server JAR file not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        } 
-        */
-
         private void DisplayPublicIP()
         {
             try
@@ -395,15 +372,18 @@ namespace RobloxLauncher
         private void Form1_Load(object sender, EventArgs e)
         {
             ProcessAllocation.Show();
+            string  notURI= Application.StartupPath;
+            webBrowser1.Url = new Uri($"file:///{notURI}");
             label8.Visible = false;
             label7.Visible = false;
             label9.Visible = false;
             label10.Visible = false;
-
+            label13.Visible = false;
             ramALLmax.Increment = ramALLmax.Value / 2 * 2;
             ramALLmin.Increment = ramALLmin.Value / 2 * 2;
+            timer1.Start();
         }
-        //Active development
+
         private void comBTN_Click(object sender, EventArgs e)
         {
             if (serverProcess != null && !serverProcess.HasExited)
@@ -415,7 +395,9 @@ namespace RobloxLauncher
                     {
                         serverProcess.StandardInput.WriteLine(command);
                         serverProcess.StandardInput.Flush();
-                        AppendOutput($"Command sent: {command}");
+                        AppendOutput($"=================================");
+                        AppendOutput($"Console command: {command}");
+                        AppendOutput($"=================================");
                         txtInput.Clear();
                     }
                     catch (Exception ex)
@@ -449,25 +431,17 @@ namespace RobloxLauncher
 
         }
 
-        //End of Active development
-
         private void serverDownload()
         {
-            // Define the URL of the Spigot server jar file
-            string spigotUrl = "https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar";
-
-            // Define the version of Spigot server
-            string spigotVersion = "1.20.4";
-
-            // Define the directory to download the server jar
+            string serverjarUrl = "https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar";
+            string serverVersion = "1.20.4";
             string downloadDir = "server";
 
-            // Create the directory if it doesn't exist
             Directory.CreateDirectory(downloadDir);
 
             using (WebClient client = new WebClient())
             {
-                client.DownloadFile(spigotUrl, Path.Combine(downloadDir, "server.jar"));
+                client.DownloadFile(serverjarUrl, Path.Combine(downloadDir, "server.jar"));
             }
             MessageBox.Show("Server downloaded successfully.");
             
@@ -481,23 +455,22 @@ namespace RobloxLauncher
         private void button2_Click_1(object sender, EventArgs e)
         {
             string zipFilePath = "jdk.zip";
-            string extractPath = "jdk"; // You can change this to the desired extraction directory
+            string extractPath = "jdk"; 
 
             
                 try
                 {
                     if (File.Exists(zipFilePath))
                     {
-                        // Create directory if it doesn't exist
+
                         if (!Directory.Exists(extractPath))
                         {
                             Directory.CreateDirectory(extractPath);
                         }
 
-                        // Extract the zip file
                         ZipFile.ExtractToDirectory(zipFilePath, extractPath);
                        
-                        MessageBox.Show("Extraction completed successfully.");
+                        MessageBox.Show("Java installed successfully.");
                     }
                     else
                     {
@@ -508,6 +481,11 @@ namespace RobloxLauncher
                 {
                     MessageBox.Show("An error occurred: " + ex.Message);
                 }
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
             
         }
     }

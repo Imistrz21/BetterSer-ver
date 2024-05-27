@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtOutput = new System.Windows.Forms.RichTextBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,41 +39,45 @@
             this.comBTN = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.loadingBAR = new System.Windows.Forms.ToolStripProgressBar();
+            this.upTimeLABEL = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Console = new System.Windows.Forms.TabPage();
             this.ProcessAllocation = new System.Windows.Forms.TabPage();
-            this.Files = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cpuALL = new System.Windows.Forms.DomainUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.ramALLmin = new System.Windows.Forms.NumericUpDown();
-            this.ramALLmax = new System.Windows.Forms.NumericUpDown();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.ramALLmax = new System.Windows.Forms.NumericUpDown();
+            this.ramALLmin = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cpuALL = new System.Windows.Forms.DomainUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Files = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Console.SuspendLayout();
             this.ProcessAllocation.SuspendLayout();
-            this.Files.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ramALLmin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ramALLmax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ramALLmin)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.Files.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtOutput
             // 
+            this.txtOutput.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtOutput.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutput.HideSelection = false;
             this.txtOutput.Location = new System.Drawing.Point(6, 6);
             this.txtOutput.Name = "txtOutput";
@@ -156,7 +161,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.loadingBAR});
+            this.loadingBAR,
+            this.upTimeLABEL});
             this.statusStrip1.Location = new System.Drawing.Point(0, 444);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(888, 22);
@@ -170,13 +176,21 @@
             this.loadingBAR.Size = new System.Drawing.Size(100, 16);
             this.loadingBAR.Visible = false;
             // 
+            // upTimeLABEL
+            // 
+            this.upTimeLABEL.Name = "upTimeLABEL";
+            this.upTimeLABEL.Size = new System.Drawing.Size(52, 17);
+            this.upTimeLABEL.Text = "Uptime: ";
+            // 
             // tabControl1
             // 
+            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Right;
             this.tabControl1.Controls.Add(this.Console);
             this.tabControl1.Controls.Add(this.ProcessAllocation);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.Files);
             this.tabControl1.Location = new System.Drawing.Point(12, 4);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(725, 405);
@@ -184,14 +198,14 @@
             // 
             // Console
             // 
+            this.Console.BackColor = System.Drawing.Color.Transparent;
             this.Console.Controls.Add(this.txtOutput);
-            this.Console.Location = new System.Drawing.Point(4, 22);
+            this.Console.Location = new System.Drawing.Point(4, 4);
             this.Console.Name = "Console";
             this.Console.Padding = new System.Windows.Forms.Padding(3);
-            this.Console.Size = new System.Drawing.Size(717, 379);
+            this.Console.Size = new System.Drawing.Size(698, 397);
             this.Console.TabIndex = 0;
             this.Console.Text = "Console";
-            this.Console.UseVisualStyleBackColor = true;
             // 
             // ProcessAllocation
             // 
@@ -204,33 +218,95 @@
             this.ProcessAllocation.Controls.Add(this.label4);
             this.ProcessAllocation.Controls.Add(this.cpuALL);
             this.ProcessAllocation.Controls.Add(this.label3);
-            this.ProcessAllocation.Location = new System.Drawing.Point(4, 22);
+            this.ProcessAllocation.Location = new System.Drawing.Point(4, 4);
             this.ProcessAllocation.Name = "ProcessAllocation";
             this.ProcessAllocation.Padding = new System.Windows.Forms.Padding(3);
-            this.ProcessAllocation.Size = new System.Drawing.Size(717, 379);
+            this.ProcessAllocation.Size = new System.Drawing.Size(698, 397);
             this.ProcessAllocation.TabIndex = 1;
             this.ProcessAllocation.Text = "Process allocation";
             this.ProcessAllocation.UseVisualStyleBackColor = true;
             // 
-            // Files
+            // label8
             // 
-            this.Files.Controls.Add(this.label7);
-            this.Files.Controls.Add(this.webBrowser1);
-            this.Files.Location = new System.Drawing.Point(4, 22);
-            this.Files.Name = "Files";
-            this.Files.Size = new System.Drawing.Size(717, 379);
-            this.Files.TabIndex = 2;
-            this.Files.Text = "Files";
-            this.Files.UseVisualStyleBackColor = true;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(294, 185);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(162, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Resource allocation is disabled...";
             // 
-            // label3
+            // ramALLmax
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 64);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Ram:";
+            this.ramALLmax.Location = new System.Drawing.Point(41, 62);
+            this.ramALLmax.Maximum = new decimal(new int[] {
+            250000,
+            0,
+            0,
+            0});
+            this.ramALLmax.Minimum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.ramALLmax.Name = "ramALLmax";
+            this.ramALLmax.Size = new System.Drawing.Size(120, 20);
+            this.ramALLmax.TabIndex = 10;
+            this.ramALLmax.Value = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.ramALLmax.ValueChanged += new System.EventHandler(this.ramALLmax_ValueChanged);
+            // 
+            // ramALLmin
+            // 
+            this.ramALLmin.Location = new System.Drawing.Point(167, 62);
+            this.ramALLmin.Maximum = new decimal(new int[] {
+            250000,
+            0,
+            0,
+            0});
+            this.ramALLmin.Minimum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.ramALLmin.Name = "ramALLmin";
+            this.ramALLmin.Size = new System.Drawing.Size(120, 20);
+            this.ramALLmin.TabIndex = 9;
+            this.ramALLmin.Value = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.ramALLmin.ValueChanged += new System.EventHandler(this.ramALLmin_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(198, 46);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Maximum";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(74, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Minimum";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Cpu:";
             // 
             // cpuALL
             // 
@@ -264,88 +340,95 @@
             this.cpuALL.TabIndex = 3;
             this.cpuALL.Text = "Cpu:";
             // 
-            // label4
+            // label3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Cpu:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 64);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Ram:";
             // 
-            // label5
+            // tabPage1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(74, 46);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Minimum";
+            this.tabPage1.Controls.Add(this.label13);
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.richTextBox1);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(698, 397);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Server Download";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // label13
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(198, 46);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Maximum";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(303, 159);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(116, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Download is disabled...";
             // 
-            // ramALLmin
+            // label12
             // 
-            this.ramALLmin.Location = new System.Drawing.Point(167, 62);
-            this.ramALLmin.Maximum = new decimal(new int[] {
-            250000,
-            0,
-            0,
-            0});
-            this.ramALLmin.Minimum = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.ramALLmin.Name = "ramALLmin";
-            this.ramALLmin.Size = new System.Drawing.Size(120, 20);
-            this.ramALLmin.TabIndex = 9;
-            this.ramALLmin.Value = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.ramALLmin.ValueChanged += new System.EventHandler(this.ramALLmin_ValueChanged);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(581, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 13);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Java 22";
             // 
-            // ramALLmax
+            // button2
             // 
-            this.ramALLmax.Location = new System.Drawing.Point(41, 62);
-            this.ramALLmax.Maximum = new decimal(new int[] {
-            250000,
-            0,
-            0,
-            0});
-            this.ramALLmax.Minimum = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.ramALLmax.Name = "ramALLmax";
-            this.ramALLmax.Size = new System.Drawing.Size(120, 20);
-            this.ramALLmax.TabIndex = 10;
-            this.ramALLmax.Value = new decimal(new int[] {
-            1024,
-            0,
-            0,
-            0});
-            this.ramALLmax.ValueChanged += new System.EventHandler(this.ramALLmax_ValueChanged);
+            this.button2.Location = new System.Drawing.Point(512, 25);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(183, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Install java";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // webBrowser1
+            // richTextBox1
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(717, 379);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("file://c:/", System.UriKind.Absolute);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 280);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(711, 96);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(42, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 13);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "1.20.4";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Download Server";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // Files
+            // 
+            this.Files.Controls.Add(this.label7);
+            this.Files.Controls.Add(this.webBrowser1);
+            this.Files.Location = new System.Drawing.Point(4, 4);
+            this.Files.Name = "Files";
+            this.Files.Size = new System.Drawing.Size(698, 397);
+            this.Files.TabIndex = 2;
+            this.Files.Text = "Files";
+            this.Files.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -356,14 +439,16 @@
             this.label7.TabIndex = 1;
             this.label7.Text = "File explorer is disabled...";
             // 
-            // label8
+            // webBrowser1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(294, 185);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(162, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Resource allocation is disabled...";
+            this.webBrowser1.AllowWebBrowserDrop = false;
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(698, 397);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Url = new System.Uri("file://c:/", System.UriKind.Absolute);
             // 
             // label9
             // 
@@ -383,75 +468,9 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "File explorer is disabled...";
             // 
-            // button1
+            // timer1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Download Server";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.richTextBox1);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(717, 379);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Server Download";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(42, 9);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 13);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "1.20.4";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(3, 280);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(711, 96);
-            this.richTextBox1.TabIndex = 4;
-            this.richTextBox1.Text = "";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(531, 25);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(183, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Install java";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(602, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 13);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Java 22";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(303, 159);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Download is disabled...";
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -484,12 +503,12 @@
             this.Console.ResumeLayout(false);
             this.ProcessAllocation.ResumeLayout(false);
             this.ProcessAllocation.PerformLayout();
-            this.Files.ResumeLayout(false);
-            this.Files.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ramALLmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ramALLmax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ramALLmin)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.Files.ResumeLayout(false);
+            this.Files.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,6 +549,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripStatusLabel upTimeLABEL;
     }
 }
 
