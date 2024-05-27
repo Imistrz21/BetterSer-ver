@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RobloxLauncher
@@ -23,28 +25,7 @@ namespace RobloxLauncher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ProcessAllocation.Hide();
-            cpuALL.Visible = false;
-            ramALLmax.Visible = false;
-            ramALLmin.Visible = false;
-            label4.Visible = false;
-            label3.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
-            webBrowser1.Visible = false;
-            label8.Visible = true;
-            label7.Visible = true;
-            label9.Visible = true;
-            label10.Visible = true;
-            loadingBAR.Value = 0;
-            loadingBAR.Enabled = true;
-            loadingBAR.Visible = true;
-            startBTN.Visible = false;
-            startBTN.Enabled = false;
-            stopBTN.Visible = true;
-            stopBTN.Enabled = true;
-            restartBTN.Visible = true;
-            restartBTN.Enabled = true;
+            showS();
 
             loadingBAR.Value = 10;
             string javaPath = Path.Combine(Application.StartupPath, "jdk", "bin", "java.exe");
@@ -89,11 +70,6 @@ namespace RobloxLauncher
                 serverProcess.BeginOutputReadLine();
                 serverProcess.BeginErrorReadLine();
                 loadingBAR.Value = 100;
-
-                AppendOutput("Server started. Sending initial test command...");
-                // Send an initial test command to verify if the server is accepting input
-                serverProcess.StandardInput.WriteLine("list");
-                serverProcess.StandardInput.Flush(); // Flush the stream to ensure the command is sent
             }
             catch (Exception ex)
             {
@@ -118,6 +94,87 @@ namespace RobloxLauncher
 
         private void button2_Click(object sender, EventArgs e)
         {
+            startServer();
+        }
+        private void startServer()
+        {
+            hideS();
+                if (serverProcess != null && !serverProcess.HasExited)
+                {
+                    try
+                    {
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"Server will be stoping...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("stop");
+                    serverProcess.StandardInput.Flush();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error while shutting down: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Server is not running.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+        }
+
+          private void hideS()
+        {
+            //after stop
             ProcessAllocation.Show();
             cpuALL.Visible = true;
             ramALLmax.Visible = true;
@@ -131,6 +188,12 @@ namespace RobloxLauncher
             label7.Visible = false;
             label9.Visible = false;
             label10.Visible = false;
+            label11.Visible = true;
+            label12.Visible = true;
+            label13.Visible = false;
+            button1.Visible = true;
+            button2.Visible = true;
+            richTextBox1.Visible = true;
             loadingBAR.Value = 0;
             loadingBAR.Enabled = false;
             loadingBAR.Visible = false;
@@ -140,24 +203,42 @@ namespace RobloxLauncher
             stopBTN.Enabled = false;
             restartBTN.Visible = false;
             restartBTN.Enabled = false;
-            if (serverProcess != null && !serverProcess.HasExited)
-            {
-                try
-                {
-                    serverProcess.Kill();
-                    AppendOutput("Server was stopped.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error while shutting down: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Server is not running.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
+
+        }
+        private void showS()
+        {
+            //after start
+            ProcessAllocation.Hide();
+            cpuALL.Visible = false;
+            ramALLmax.Visible = false;
+            ramALLmin.Visible = false;
+            label4.Visible = false;
+            label3.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+            webBrowser1.Visible = false;
+            label8.Visible = true;
+            label7.Visible = true;
+            label9.Visible = true;
+            label10.Visible = true;
+            label11.Visible = false;
+            label12.Visible = false;
+            label13.Visible = true;
+            button1.Visible = false;
+            button2.Visible = false;
+            richTextBox1.Visible = false;
+            loadingBAR.Value = 0;
+            loadingBAR.Enabled = true;
+            loadingBAR.Visible = true;
+            startBTN.Visible = false;
+            startBTN.Enabled = false;
+            stopBTN.Visible = true;
+            stopBTN.Enabled = true;
+            restartBTN.Visible = true;
+            restartBTN.Enabled = true;
+
+        }
         /* private void LoadServerVersion()
         {
             string serverJarPath = Path.Combine(Application.StartupPath, "server", "server.jar");
@@ -245,26 +326,7 @@ namespace RobloxLauncher
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ProcessAllocation.Hide();
-            cpuALL.Visible = false;
-            ramALLmax.Visible = false;
-            ramALLmin.Visible = false;
-            label4.Visible = false;
-            label3.Visible = false;
-            label5.Visible = false;
-            label6.Visible = false;
-            webBrowser1.Visible = false;
-            label8.Visible = true;
-            label7.Visible = true;
-            label9.Visible = true;
-            label10.Visible = true;
-            loadingBAR.Value = 0;
-            loadingBAR.Enabled = true;
-            loadingBAR.Visible = true;
-            startBTN.Visible = false;
-            startBTN.Enabled = false;
-            stopBTN.Visible = true;
-            stopBTN.Enabled = true;
+            hideS();
             string javaPath = Path.Combine(Application.StartupPath, "jdk", "bin", "java.exe");
             string serverJarPath = Path.Combine(Application.StartupPath, "server", "server.jar");
             if (serverProcess != null && !serverProcess.HasExited)
@@ -389,5 +451,64 @@ namespace RobloxLauncher
 
         //End of Active development
 
+        private void serverDownload()
+        {
+            // Define the URL of the Spigot server jar file
+            string spigotUrl = "https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar";
+
+            // Define the version of Spigot server
+            string spigotVersion = "1.20.4";
+
+            // Define the directory to download the server jar
+            string downloadDir = "server";
+
+            // Create the directory if it doesn't exist
+            Directory.CreateDirectory(downloadDir);
+
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(spigotUrl, Path.Combine(downloadDir, "server.jar"));
+            }
+            MessageBox.Show("Server downloaded successfully.");
+            
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            serverDownload();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            string zipFilePath = "jdk.zip";
+            string extractPath = "jdk"; // You can change this to the desired extraction directory
+
+            
+                try
+                {
+                    if (File.Exists(zipFilePath))
+                    {
+                        // Create directory if it doesn't exist
+                        if (!Directory.Exists(extractPath))
+                        {
+                            Directory.CreateDirectory(extractPath);
+                        }
+
+                        // Extract the zip file
+                        ZipFile.ExtractToDirectory(zipFilePath, extractPath);
+                       
+                        MessageBox.Show("Extraction completed successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("The specified zip file does not exist.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred: " + ex.Message);
+                }
+            
+        }
     }
 }
