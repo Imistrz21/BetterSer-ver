@@ -169,15 +169,6 @@ namespace RobloxLauncher
                     serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
                     serverProcess.StandardInput.Flush();
                     //
-                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
-                    serverProcess.StandardInput.Flush();
-                    //
-                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
-                    serverProcess.StandardInput.Flush();
-                    //
-                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
-                    serverProcess.StandardInput.Flush();
-                    //
                     serverProcess.StandardInput.WriteLine("stop");
                     serverProcess.StandardInput.Flush();
 
