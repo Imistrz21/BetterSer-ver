@@ -43,6 +43,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Console = new System.Windows.Forms.TabPage();
             this.ProcessAllocation = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.ramALLmax = new System.Windows.Forms.NumericUpDown();
             this.ramALLmin = new System.Windows.Forms.NumericUpDown();
@@ -83,7 +84,7 @@
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ReadOnly = true;
             this.txtOutput.ShortcutsEnabled = false;
-            this.txtOutput.Size = new System.Drawing.Size(705, 367);
+            this.txtOutput.Size = new System.Drawing.Size(689, 385);
             this.txtOutput.TabIndex = 0;
             this.txtOutput.Text = "";
             this.txtOutput.UseWaitCursor = true;
@@ -210,6 +211,7 @@
             // ProcessAllocation
             // 
             this.ProcessAllocation.CausesValidation = false;
+            this.ProcessAllocation.Controls.Add(this.button3);
             this.ProcessAllocation.Controls.Add(this.label8);
             this.ProcessAllocation.Controls.Add(this.ramALLmax);
             this.ProcessAllocation.Controls.Add(this.ramALLmin);
@@ -225,6 +227,16 @@
             this.ProcessAllocation.TabIndex = 1;
             this.ProcessAllocation.Text = "Process allocation";
             this.ProcessAllocation.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(545, 371);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(147, 23);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "Server Config";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // label8
             // 
@@ -551,6 +563,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripStatusLabel upTimeLABEL;
+        private System.Windows.Forms.Button button3;
     }
 }
 

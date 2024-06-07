@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BetterServer;
 
 namespace RobloxLauncher
 {
@@ -169,6 +170,15 @@ namespace RobloxLauncher
                     serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
                     serverProcess.StandardInput.Flush();
                     //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
+                    serverProcess.StandardInput.WriteLine("/title @a title {\"text\":\"NOW!!...\",\"color\":\"dark_red\"}");
+                    serverProcess.StandardInput.Flush();
+                    //
                     serverProcess.StandardInput.WriteLine("stop");
                     serverProcess.StandardInput.Flush();
 
@@ -205,6 +215,7 @@ namespace RobloxLauncher
             label13.Visible = false;
             button1.Visible = true;
             button2.Visible = true;
+            button3.Visible = true;
             richTextBox1.Visible = true;
             loadingBAR.Value = 0;
             loadingBAR.Enabled = false;
@@ -239,6 +250,7 @@ namespace RobloxLauncher
             label13.Visible = true;
             button1.Visible = false;
             button2.Visible = false;
+            button3.Visible = false;
             richTextBox1.Visible = false;
             loadingBAR.Value = 0;
             loadingBAR.Enabled = true;
@@ -478,6 +490,12 @@ namespace RobloxLauncher
         private void timer1_Tick(object sender, EventArgs e)
         {
             
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Settings Settings = new Settings();
+            Settings.ShowDialog();
         }
     }
 }
